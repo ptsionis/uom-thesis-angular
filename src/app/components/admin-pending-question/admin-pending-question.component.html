@@ -1,0 +1,137 @@
+@if (isDisplayed) {
+<div class="admin-pending-item">
+  <p class="pending-item-id">
+    No. <span>{{ id }}</span>
+  </p>
+  <div class="pending-item-section">
+    <label> Question <span class="pending-item-required">*</span> </label>
+    <input
+      class="pending-item-control"
+      type="text"
+      [(ngModel)]="editedQuestion"
+    />
+    <div class="pending-item-note">(Maximum length 500 characters)</div>
+  </div>
+  <div class="pending-item-section">
+    <label> Category <span class="pending-item-required">*</span> </label>
+    <div class="pending-item-radio-group">
+      @for (category of categories; track category) {
+      <div class="pending-item-radio-option">
+        <input
+          type="radio"
+          [name]="'category-q' + id"
+          [value]="category"
+          [id]="'category' + category + '-q' + id"
+          [(ngModel)]="editedCategory"
+          required
+        />
+        <label
+          class="pending-item-radio-label"
+          [for]="'category' + category + '-q' + id"
+        >
+          {{ category }}
+        </label>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="pending-item-section">
+    <label> Level <span class="pending-item-required">*</span> </label>
+    <div class="pending-item-radio-group">
+      @for (level of [1, 2, 3]; track level) {
+      <div class="pending-item-radio-option">
+        <input
+          type="radio"
+          [name]="'level-q' + id"
+          [value]="level"
+          [id]="'level' + level + '-q' + id"
+          [(ngModel)]="editedLevel"
+          required
+        />
+        <label
+          class="pending-item-radio-label"
+          [for]="'level' + level + '-q' + id"
+        >
+          {{ level }}
+        </label>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="pending-item-section">
+    <label> Answer 1 <span class="pending-item-required">*</span> </label>
+    <input
+      class="pending-item-control"
+      type="text"
+      [(ngModel)]="editedAnswer1"
+    />
+  </div>
+  <div class="pending-item-section">
+    <label> Answer 2 <span class="pending-item-required">*</span> </label>
+    <input
+      class="pending-item-control"
+      type="text"
+      [(ngModel)]="editedAnswer2"
+    />
+    <div class="pending-item-section">
+      <label> Answer 3 <span class="pending-item-required">*</span> </label>
+      <input
+        class="pending-item-control"
+        type="text"
+        [(ngModel)]="editedAnswer3"
+      />
+    </div>
+  </div>
+  <div class="pending-item-section">
+    <label> Answer 4 <span class="pending-item-required">*</span> </label>
+    <input
+      class="pending-item-control"
+      type="text"
+      [(ngModel)]="editedAnswer4"
+    />
+  </div>
+  <div class="pending-item-section">
+    <label> Correct Answer <span class="pending-item-required">*</span> </label>
+    <div class="pending-item-radio-group">
+      @for (correctId of [1, 2, 3, 4]; track correctId) {
+      <div class="pending-item-radio-option">
+        <input
+          type="radio"
+          [name]="'correctId-q' + id"
+          [value]="correctId"
+          [id]="'correctId' + correctId + '-q' + id"
+          [(ngModel)]="editedCorrectId"
+          required
+        />
+        <label
+          class="pending-item-radio-label"
+          [for]="'correctId' + correctId + '-q' + id"
+        >
+          {{ correctId }}
+        </label>
+      </div>
+      }
+    </div>
+  </div>
+  <p>
+    Source: @if (source) {
+    <a [href]="source" target="_blank">{{ source }}</a>
+    }
+  </p>
+  <p>User ID: {{ userId }}</p>
+  <div class="pending-item-button-wrapper">
+    <button
+      class="pending-item-button pending-item-button-accept"
+      (click)="saveQuestion()"
+    >
+      Save
+    </button>
+    <button
+      class="pending-item-button pending-item-button-delete"
+      (click)="deleteQuestion()"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+}

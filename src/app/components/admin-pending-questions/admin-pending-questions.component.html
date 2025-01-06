@@ -1,0 +1,28 @@
+<div class="admin-pending-wrapper popup-wrapper">
+  <div class="admin-pending-questions">
+    <div class="pending-questions-close" (click)="toggleAdminPending()">
+      close
+    </div>
+    <div class="admin-pending-outer">
+      @if (pendingQuestions.length > 0) { @for (pendingQuestion of
+      pendingQuestions; track pendingQuestion) {
+      <app-admin-pending-question
+        [id]="pendingQuestion.id"
+        [question]="pendingQuestion.question"
+        [category]="pendingQuestion.category"
+        [level]="pendingQuestion.level"
+        [answer1]="pendingQuestion.answer1"
+        [answer2]="pendingQuestion.answer2"
+        [answer3]="pendingQuestion.answer3"
+        [answer4]="pendingQuestion.answer4"
+        [correctId]="pendingQuestion.correctId"
+        [source]="pendingQuestion.source"
+        [userId]="pendingQuestion.userId"
+      >
+      </app-admin-pending-question>
+      } } @else {
+      <app-loader-ring></app-loader-ring>
+      }
+    </div>
+  </div>
+</div>

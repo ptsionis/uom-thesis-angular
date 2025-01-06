@@ -1,0 +1,43 @@
+<div [class]="{ frienditem: true, 'challenged-me': challengedMe }">
+  <div class="frienditem-name-wrapper">
+    <app-availability-icon
+      [availability]="availability"
+    ></app-availability-icon>
+    <div class="frienditem-name" (click)="toggleShowProfile()">
+      <img
+        class="friend-img"
+        [src]="
+          friend.profilePicUrl ? friend.profilePicUrl : '/images/noPicture.webp'
+        "
+        alt="Pic"
+      />
+      <span class="frienditem-name-span">{{
+        getFirstName(friend.username)
+      }}</span>
+    </div>
+  </div>
+  @if (challengedMe) {
+  <div class="challenge-response-wrapper">
+    <app-challenge-accept-button
+      [friendId]="friend.id"
+    ></app-challenge-accept-button>
+    <app-challenge-decline-button
+      [friendId]="friend.id"
+    ></app-challenge-decline-button>
+  </div>
+  } @else if (cancelButton) {
+  <app-challenge-cancel-button
+    [friendId]="friend.id"
+  ></app-challenge-cancel-button>
+  } @else {
+  <app-challenge-button
+    [friendId]="friend.id"
+    [availability]="availability"
+  ></app-challenge-button>
+  } @if (showProfile) {
+  <app-profile-preview
+    [user]="friend"
+    (toggleShowProfileEvent)="toggleShowProfile()"
+  ></app-profile-preview>
+  }
+</div>

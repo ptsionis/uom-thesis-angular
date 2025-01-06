@@ -1,0 +1,16 @@
+<div class="modal-form-wrapper popup-wrapper">
+  <div class="modal-form">
+    <span
+      [ngClass]="['modal-form-text', !isError ? '' : 'modal-form-text-fail']"
+    >
+      {{ modalMsg }}
+    </span>
+    <button class="modal-form-close" (click)="onClose()">
+      @if (!isError) {
+      <div class="modal-confirm-yes">Yes</div>
+      } @else {
+      <div class="modal-confirm-no">No</div>
+      }
+    </button>
+  </div>
+</div>

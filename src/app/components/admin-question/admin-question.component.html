@@ -1,0 +1,133 @@
+@if (isDisplayed) {
+<div class="admin-question-item">
+  <p class="question-item-id">
+    No. <span>{{ id }}</span>
+  </p>
+  <div class="question-item-section">
+    <label> Question <span class="question-item-required">*</span> </label>
+    <input
+      class="question-item-control"
+      type="text"
+      [(ngModel)]="editedQuestion"
+    />
+    <div class="question-item-note">(Maximum length 500 characters)</div>
+  </div>
+  <div class="question-item-section">
+    <label> Category <span class="question-item-required">*</span> </label>
+    <div class="question-item-radio-group">
+      @for (category of categories; track category) {
+      <div class="question-item-radio-option">
+        <input
+          type="radio"
+          [name]="'category-q' + id"
+          [value]="category"
+          [id]="'category' + category + '-q' + id"
+          [(ngModel)]="editedCategory"
+          required
+        />
+        <label
+          class="question-item-radio-label"
+          [for]="'category' + category + '-q' + id"
+        >
+          {{ category }}
+        </label>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="question-item-section">
+    <label> Level <span class="question-item-required">*</span> </label>
+    <div class="question-item-radio-group">
+      @for (level of [1, 2, 3]; track level) {
+      <div class="question-item-radio-option">
+        <input
+          type="radio"
+          [name]="'level-q' + id"
+          [value]="level"
+          [id]="'level' + level + '-q' + id"
+          [(ngModel)]="editedLevel"
+          required
+        />
+        <label
+          class="question-item-radio-label"
+          [for]="'level' + level + '-q' + id"
+        >
+          {{ level }}
+        </label>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="question-item-section">
+    <label> Answer 1 <span class="question-item-required">*</span> </label>
+    <input
+      class="question-item-control"
+      type="text"
+      [(ngModel)]="editedAnswer1"
+    />
+  </div>
+  <div class="question-item-section">
+    <label> Answer 2 <span class="question-item-required">*</span> </label>
+    <input
+      class="question-item-control"
+      type="text"
+      [(ngModel)]="editedAnswer2"
+    />
+    <div class="question-item-section">
+      <label> Answer 3 <span class="question-item-required">*</span> </label>
+      <input
+        class="question-item-control"
+        type="text"
+        [(ngModel)]="editedAnswer3"
+      />
+    </div>
+  </div>
+  <div class="question-item-section">
+    <label> Answer 4 <span class="question-item-required">*</span> </label>
+    <input
+      class="question-item-control"
+      type="text"
+      [(ngModel)]="editedAnswer4"
+    />
+  </div>
+  <div class="question-item-section">
+    <label>
+      Correct Answer <span class="question-item-required">*</span>
+    </label>
+    <div class="question-item-radio-group">
+      @for (correctId of [1, 2, 3, 4]; track correctId) {
+      <div class="question-item-radio-option">
+        <input
+          type="radio"
+          [name]="'correctId-q' + id"
+          [value]="correctId"
+          [id]="'correctId' + correctId + '-q' + id"
+          [(ngModel)]="editedCorrectId"
+          required
+        />
+        <label
+          class="question-item-radio-label"
+          [for]="'correctId' + correctId + '-q' + id"
+        >
+          {{ correctId }}
+        </label>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="question-item-button-wrapper">
+    <button
+      class="question-item-button question-item-button-modify"
+      (click)="updateQuestion()"
+    >
+      Save
+    </button>
+    <button
+      class="question-item-button question-item-button-delete"
+      (click)="deleteQuestion()"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+}

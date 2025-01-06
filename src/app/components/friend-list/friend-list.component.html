@@ -1,0 +1,10 @@
+<div class="friendlist-wrapper popup-wrapper">
+  <div class="friendlist">
+    <div class="friendlist-close" (click)="toggleFriendlist()">close</div>
+    <ul class="friendlist-ul">
+      @for (friend of friends; track friend) {
+      <li><app-friend-item [friend]="friend"></app-friend-item></li>
+      }
+    </ul>
+  </div>
+</div>

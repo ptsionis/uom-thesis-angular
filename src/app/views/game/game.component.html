@@ -1,0 +1,31 @@
+<main class="game-main">
+  @if (!opponent || !turn) {
+  <app-loader-ring></app-loader-ring>
+  } @else {
+  <div class="game-header">
+    <app-game-player [player]="player" [isOpponent]="false"></app-game-player>
+    <app-score-board
+      [scoreMe]="player.points"
+      [scoreOpponent]="opponent.points"
+    ></app-score-board>
+    <app-game-player [player]="opponent" [isOpponent]="true"></app-game-player>
+  </div>
+  <div class="game-wrapper">
+    <span class="game-turn">
+      {{ turn === user.id ? "Playing!" : "Waiting..." }}
+    </span>
+    @if (stage === Stages.SELECTION) {
+    <app-game-categories-wrapper
+      [turn]="turn"
+      [questionsPlayed]="questionsPlayed"
+      [question]="question"
+    ></app-game-categories-wrapper>
+    } @else {
+    <app-game-question-wrapper
+      [turn]="turn"
+      [question]="question"
+    ></app-game-question-wrapper>
+    }
+  </div>
+  }
+</main>

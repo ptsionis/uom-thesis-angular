@@ -1,0 +1,24 @@
+<div class="admin-questions-wrapper popup-wrapper">
+  <div class="admin-questions">
+    <div class="questions-close" (click)="toggleAdminQuestions()">close</div>
+    <div class="admin-questions-outer">
+      @if (allQuestions.length > 0) { @for (question of allQuestions; track
+      question) {
+      <app-admin-question
+        [id]="question.id"
+        [question]="question.question"
+        [category]="question.category"
+        [level]="question.level"
+        [answer1]="question.answer1"
+        [answer2]="question.answer2"
+        [answer3]="question.answer3"
+        [answer4]="question.answer4"
+        [correctId]="question.correctId"
+      >
+      </app-admin-question>
+      } } @else {
+      <app-loader-ring></app-loader-ring>
+      }
+    </div>
+  </div>
+</div>

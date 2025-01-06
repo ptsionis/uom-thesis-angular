@@ -1,0 +1,22 @@
+<div class="game-categories-wrapper">
+  @for (category of categoriesKeys(); track category) {
+  <app-game-category-tile
+    [category]="category"
+    [level]="1"
+    [turn]="turn"
+    [isPlayed]="questionsPlayed.includes(getQuestionTileId(category, 1))"
+  ></app-game-category-tile>
+  <app-game-category-tile
+    [category]="category"
+    [level]="2"
+    [turn]="turn"
+    [isPlayed]="questionsPlayed.includes(getQuestionTileId(category, 2))"
+  ></app-game-category-tile>
+  <app-game-category-tile
+    [category]="category"
+    [level]="3"
+    [turn]="turn"
+    [isPlayed]="questionsPlayed.includes(getQuestionTileId(category, 3))"
+  ></app-game-category-tile>
+  }
+</div>

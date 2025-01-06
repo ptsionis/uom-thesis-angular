@@ -1,0 +1,26 @@
+<div class="all-categories-winrates-wrapper">
+  <app-category-winrate-bar
+    categoryName="History"
+    [winrate]="getWinrate(user.historyWon, user.historyPlayed)"
+  />
+  <app-category-winrate-bar
+    categoryName="Geography"
+    [winrate]="getWinrate(user.geographyWon, user.geographyPlayed)"
+  />
+  <app-category-winrate-bar
+    categoryName="Finance"
+    [winrate]="getWinrate(user.financeWon, user.financePlayed)"
+  />
+  <app-category-winrate-bar
+    categoryName="Logo"
+    [winrate]="getWinrate(user.logoWon, user.logoPlayed)"
+  />
+  <app-category-winrate-bar
+    categoryName="Trivia"
+    [winrate]="getWinrate(user.triviaWon, user.triviaPlayed)"
+  />
+  <app-category-winrate-bar
+    categoryName="Hidden"
+    [winrate]="getWinrate(user.hiddenWon, user.hiddenPlayed)"
+  />
+</div>

@@ -1,0 +1,28 @@
+<div class="game-question-wrapper">
+  <span class="game-question-head"
+    >{{ question.dataValues.category }} X{{ question.dataValues.level }}</span
+  >
+  <span class="game-question">{{ question.dataValues.question }}</span>
+  <div class="game-answers-wrapper">
+    <app-game-answer-button
+      [id]="1"
+      [text]="question.dataValues.answer1"
+      [turn]="turn"
+    ></app-game-answer-button>
+    <app-game-answer-button
+      [id]="2"
+      [text]="question.dataValues.answer2"
+      [turn]="turn"
+    ></app-game-answer-button>
+    <app-game-answer-button
+      [id]="3"
+      [text]="question.dataValues.answer3"
+      [turn]="turn"
+    ></app-game-answer-button>
+    <app-game-answer-button
+      [id]="4"
+      [text]="question.dataValues.answer4"
+      [turn]="turn"
+    ></app-game-answer-button>
+  </div>
+</div>

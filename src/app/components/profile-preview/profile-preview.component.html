@@ -1,0 +1,35 @@
+<div class="popup-wrapper profile-preview-wrapper">
+  <div class="profile-preview">
+    <div class="profile-preview-close" (click)="toggleShowProfile()">close</div>
+    <div class="profile-preview-outer">
+      <div class="profile-preview-user">
+        <img
+          class="profile-preview-avatar-img"
+          [src]="
+            user?.profilePicUrl ? user?.profilePicUrl : '/images/noPicture.webp'
+          "
+          alt="Pic"
+          (error)="handleImageError($event)"
+        />
+        <h3 class="profile-preview-name">
+          {{ getFirstName(user?.username) }}
+          (<span>{{ getWinrate(user?.gamesWon, user?.gamesPlayed) + "%" }}</span
+          >)
+        </h3>
+        <span class="profile-preview-joined">
+          Member since {{ getJoinedDate(user?.createdAt) }}
+        </span>
+        <span class="profile-preview-rank">
+          {{ capitalizeFirstLetter(getRank(user?.score)) }}
+        </span>
+      </div>
+      <app-progress-bar
+        [currentValue]="user?.score"
+        [goalValue]="getGoalScore(user?.score)"
+      ></app-progress-bar>
+      <app-all-categories-winrates-bars
+        [user]="user"
+      ></app-all-categories-winrates-bars>
+    </div>
+  </div>
+</div>

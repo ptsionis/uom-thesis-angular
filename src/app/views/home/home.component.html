@@ -1,0 +1,66 @@
+<main class="home-main">
+  @if (user) {
+  <div class="home-welcome-wrapper">
+    <img
+      class="home-avatar-img"
+      [src]="user.profilePicUrl ? user.profilePicUrl : '/images/noPicture.webp'"
+      alt="Pic"
+      (error)="handleImageError($event)"
+      (click)="toggleShowProfile()"
+    />
+    <h3 class="home-welcome-text" (click)="toggleShowProfile()">
+      Welcome, {{ user.username }}!
+    </h3>
+    <div class="home-main-buttons">
+      <quick-play-button></quick-play-button>
+      <app-play-vs-friend-button
+        (toggleShowFriendlistEvent)="toggleShowFriendlist()"
+      ></app-play-vs-friend-button>
+      <app-submit-question-button
+        (toggleQuestionFormEvent)="toggleShowQuestionForm()"
+      ></app-submit-question-button>
+      @if (user.role !== Roles.USER) {
+      <app-admin-pending-button
+        (toggleAdminPendingEvent)="toggleShowAdminPending()"
+      ></app-admin-pending-button>
+      <app-admin-questions-button
+        (toggleAdminQuestionsEvent)="toggleShowAdminQuestions()"
+      ></app-admin-questions-button>
+      }
+    </div>
+    @if (showOpenChallengeModal) {
+    <app-open-challenge-modal></app-open-challenge-modal>
+    } @if (showFriendlist) {
+    <app-friend-list
+      [user]="user"
+      (toggleFriendlistEvent)="toggleShowFriendlist()"
+    ></app-friend-list>
+    } @if (showQuestionForm) {
+    <app-question-form
+      (toggleQuestionFormEvent)="toggleShowQuestionForm()"
+    ></app-question-form>
+    } @if (showAdminPending) {
+    <app-admin-pending-questions
+      (toggleAdminPendingEvent)="toggleShowAdminPending()"
+    ></app-admin-pending-questions>
+    } @if (showAdminQuestions) {
+    <app-admin-questions
+      (toggleAdminQuestionsEvent)="toggleShowAdminQuestions()"
+    ></app-admin-questions>
+    } @if (showProfile) {
+    <app-profile-preview
+      [user]="user"
+      (toggleShowProfileEvent)="toggleShowProfile()"
+    ></app-profile-preview>
+    } @if (showChallengeModal) {
+    <app-challenge-modal
+      [user]="user"
+      [challenger]="challenger"
+    ></app-challenge-modal>
+    }
+  </div>
+  } @else {
+  <app-loader-ring></app-loader-ring>
+  }
+  <app-logout-button></app-logout-button>
+</main>

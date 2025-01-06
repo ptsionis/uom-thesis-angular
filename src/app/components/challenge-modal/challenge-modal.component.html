@@ -1,0 +1,32 @@
+<div class="challenge-modal-wrapper popup-wrapper">
+  <div class="challenge-modal">
+    <span>{{ getFirstName(challenger.username) }} challenged you!</span>
+    <div class="challenge-modal-vs-wrapper">
+      <img
+        class="challenge-modal-profile-pic"
+        [src]="
+          user.profilePicUrl ? user.profilePicUrl : '/images/noPicture.webp'
+        "
+        alt="Pic"
+      />
+      <span class="challenge-modal-vs">vs</span>
+      <img
+        class="challenge-modal-profile-pic"
+        [src]="
+          challenger.profilePicUrl
+            ? challenger.profilePicUrl
+            : '/images/noPicture.webp'
+        "
+        alt="Pic"
+      />
+    </div>
+    <div class="challenge-modal-respond-wrapper">
+      <app-challenge-accept-button
+        [friendId]="challenger.id"
+      ></app-challenge-accept-button>
+      <app-challenge-decline-button
+        [friendId]="challenger.id"
+      ></app-challenge-decline-button>
+    </div>
+  </div>
+</div>

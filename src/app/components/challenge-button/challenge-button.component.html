@@ -1,0 +1,8 @@
+<button
+  [class]="buttonClass()"
+  type="button"
+  [disabled]="!isButtonEnabled"
+  (click)="challengeFriend()"
+>
+  {{ buttonText() }}
+</button>

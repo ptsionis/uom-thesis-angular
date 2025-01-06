@@ -1,0 +1,10 @@
+<div [class]="['game-player', { 'game-player-opponent': isOpponent }]">
+  <img
+    class="game-player-img"
+    [src]="
+      player.profilePicUrl ? player.profilePicUrl : '/images/noPicture.webp'
+    "
+    alt="Pic"
+  />
+  <span class="game-player-name">{{ getFirstName(player.username) }}</span>
+</div>
